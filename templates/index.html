@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+  <title>Gemini Image Demo</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <style>
+    body {
+    font-family: sans-serif;
+  }
+  
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  label {
+    margin-bottom: 0.5rem;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[type="submit"] {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  #result {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #result h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  #result p {
+    margin-bottom: 0.5rem;
+  }
+  
+  #result img {
+    max-width: 100%;
+  }
+
+
+  </style>
+
+</head>
+<body>
+  <h1>Gemini Image Demo</h1>
+
+  <form action="/" method="POST" enctype="multipart/form-data">
+    <label for="input">Input Prompt:</label>
+    <input type="text" id="input" name="input">
+
+    <label for="image">Image:</label>
+    <input type="file" id="image" name="image" accept="image/*">
+
+    <input type="submit" value="Tell me about the image">
+  </form>
+
+  <div id="result">
+    {% if input %}
+      <h2>Input:</h2>
+      <p>{{ input }}</p>
+
+      <h2>Image:</h2>
+      <img src="{{ image.url }}" alt="Uploaded Image">
+
+      <h2>Response:</h2>
+      <p>{{ response }}</p>
+    {% endif %}
+  </div>
+
+</body>
+</html>
